@@ -24,12 +24,21 @@ sync.addEventListener('click',async () => {
    await data.syncData();
 }
 )
+
 const reset = document.querySelector('[data-reset]')
 reset.addEventListener('click',async () => {
    fetch("php/reset.php").then(async ()=>{
     window.localStorage.removeItem("data");
     await data.loaddata();
     data.renderData();
+   })
+}
+)
+
+const breaker = document.querySelector('[data-break]')
+breaker.addEventListener('click',async () => {
+   fetch("php/break.php").then( ()=>{
+    window.location.reload();
    })
 }
 )

@@ -1,8 +1,8 @@
 <?php 
 
 $data = $_POST["data"];
-
-$file = fopen('../js/database.json','w');
+ $folder = file_get_contents("cache.txt");
+$file = fopen("../$folder/database.json",'w');
 fwrite($file,$data);
 fclose($file);
 
