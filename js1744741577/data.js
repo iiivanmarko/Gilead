@@ -10,21 +10,27 @@ export class DATA {
       return;
     }
 
-    const database = await fetch("php/loadData.php");
-    const fetcheddata = await database.json();
-
-    window.localStorage.setItem("data", JSON.stringify(fetcheddata));
-
-    this.data = fetcheddata;
+    $.post("php/loadData.php", {
+      owner: person,
+    })
+      .done(async (ret) => {
+        const parsedData = JSON.parse(ret);
+        window.localStorage.setItem("data", JSON.stringify(parsedData));
+        this.data = parsedData;
+      })
+      .fail(function (error) {
+        console.error("Error loading data:", error);
+      });
   }
 
   addItem(text, owner) {
-    let foundItem = this.data.find((item) => {
-      return item.wunsch === "" && item.owner === owner;
-    });
-
-    foundItem.wunsch = text;
-    foundItem.time = new Date().getTime();
+    const item = {
+      id: 0,
+      wunsch: text,
+      time: new Date().getTime(),
+      owner: owner,
+    };
+    this.data.push(item);
   }
 
   renderData() {
@@ -35,24 +41,19 @@ export class DATA {
     window.localStorage.setItem("data", JSON.stringify(this.data));
   }
 
+  async syncData() {
+    window.localStorage.removeItem("data");
 
-
-async syncData() {
-      window.localStorage.removeItem("data");
-
-      $.post("php/saveData.php", {
-        data: JSON.stringify(this.data),
+    $.post("php/saveData.php", {
+      data: JSON.stringify(this.data),
+      owner: person,
+    })
+      .done(async () => {
+        await this.loaddata();
+        this.renderData();
       })
-        .done(async () =>{
-          await  this.loaddata();
-     this.renderData()
-
-        })
-        .fail(function (error) {
-          console.error("Error saving data:", error);
-        });
-
-}
-
-
+      .fail(function (error) {
+        console.error("Error saving data:", error);
+      });
+  }
 }

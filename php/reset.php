@@ -1,11 +1,17 @@
+<?php
+require 'db_config.inc.php'; 
 
+$conn = new mysqli($db_host, $db_user, $db_pass, $db_name, $db_port);
+if ($conn->connect_error) {
+    die(json_encode(["error" => "Connection failed"]));
+}
 
-<?php 
- $folder = file_get_contents("cache.txt");
+// Delete all records
+$conn->query("DELETE FROM flowers");
 
-$clean = file_get_contents("../$folder/clear.json");
-$file = fopen("../$folder/database.json",'w');
-fwrite($file,$clean);
-fclose($file);
+// Reset auto-increment
+$conn->query("ALTER TABLE flowers AUTO_INCREMENT = 1");
 
-?>
+echo json_encode(["success" => true, "message" => "Flowers table reset."]);
+
+$conn->close();
