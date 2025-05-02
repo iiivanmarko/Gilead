@@ -1,4 +1,14 @@
 import { DATA } from "./data.js";
+import { FLOWERS } from "./flower.js";
+
+
+
+FLOWERS.forEach(f => {
+   f.hide()
+});
+
+
+
 
 
 

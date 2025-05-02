@@ -1,3 +1,5 @@
+import { FLOWERS } from "./flower.js";
+
 let person = "person";
 
 export class DATA {
@@ -7,6 +9,9 @@ export class DATA {
   async loaddata() {
     if (localStorage.getItem("data")) {
       this.data = JSON.parse(localStorage.getItem("data"));
+      this.data.forEach(e => {
+        FLOWERS.get(e.id).grow()
+      });
       return;
     }
 
@@ -19,7 +24,7 @@ export class DATA {
         this.data = parsedData;
       })
       .fail(function (error) {
-        console.error("Error loading data:", error);
+        
       });
   }
 
@@ -30,11 +35,12 @@ export class DATA {
       time: new Date().getTime(),
       owner: owner,
     };
+    FLOWERS.get(0).grow()
     this.data.push(item);
   }
 
   renderData() {
-    console.log(this.data);
+    
   }
 
   saveData() {
@@ -53,7 +59,7 @@ export class DATA {
         this.renderData();
       })
       .fail(function (error) {
-        console.error("Error saving data:", error);
+        
       });
   }
 }
