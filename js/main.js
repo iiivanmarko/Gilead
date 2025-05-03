@@ -1,5 +1,6 @@
 import { DATA } from "./data.js";
 import { FLOWERS } from "./flower.js";
+import { loginhandler } from "./login.js";
 
 
 
@@ -12,9 +13,9 @@ FLOWERS.forEach(f => {
 
 
 
-const data = new DATA();
-data.loaddata();
-data.renderData();
+export const data = new DATA();
+
+loginhandler();
 
 const adds = document.querySelectorAll('[data-add]')
 
@@ -22,7 +23,7 @@ const adds = document.querySelectorAll('[data-add]')
 adds.forEach(add => {
     add.addEventListener('click', () => {  
     
-    data.addItem("test", add.dataset.add);
+    data.addItem("test", localStorage.getItem("owner"));
     data.saveData();
     data.renderData();
     

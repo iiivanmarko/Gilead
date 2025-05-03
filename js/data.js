@@ -1,6 +1,6 @@
 import { FLOWERS } from "./flower.js";
 
-let person = "person";
+let person = localStorage.getItem("owner");
 
 export class DATA {
   constructor() {
