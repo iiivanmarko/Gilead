@@ -15,19 +15,12 @@ foreach ($flowers as $flower) {
         $wunsch = $flower['wunsch'];
         $time = $flower['time'];
 
-        if ($id === 0) {
-            // Insert new
-            $stmt = $conn->prepare("INSERT INTO flowers (owner, wunsch, time) VALUES (?, ?, ?)");
-            $stmt->bind_param("sss", $owner, $wunsch, $time);
-            $stmt->execute();
-            $stmt->close();
-        } else {
-            // Update existing
-            $stmt = $conn->prepare("UPDATE flowers SET wunsch = ?, time = ? WHERE id = ? AND owner = ?");
-            $stmt->bind_param("ssis", $wunsch, $time, $id, $owner);
-            $stmt->execute();
-            $stmt->close();
-        }
+        // Update existing
+        $stmt = $conn->prepare("UPDATE flowers SET wunsch = ?, time = ? WHERE id = ? AND owner = ?");
+        $stmt->bind_param("ssis", $wunsch, $time, $id, $owner);
+        $stmt->execute();
+        $stmt->close();
+        
     }
 }
 
