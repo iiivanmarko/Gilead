@@ -7,21 +7,26 @@ export class DATA {
     this.data = [];
   }
   async loaddata() {
-    if (localStorage.getItem("data")) {
-      this.data = JSON.parse(localStorage.getItem("data"));
-      return;
-    }
+    return new Promise((resolve, reject) => {
+      if (localStorage.getItem("data")) {
+        this.data = JSON.parse(localStorage.getItem("data"));
+        resolve(this.data);
+        return;
+      }
 
-    $.post("php/loadData.php", {
-      owner: person,
-    })
-      .done(async (ret) => {
-        const parsedData = JSON.parse(ret);
-
-        window.localStorage.setItem("data", JSON.stringify(parsedData));
-        this.data = parsedData;
+      $.post("php/loadData.php", {
+        owner: person,
       })
-      .fail(function (error) {});
+        .done((ret) => {
+          const parsedData = JSON.parse(ret);
+          window.localStorage.setItem("data", JSON.stringify(parsedData));
+          this.data = parsedData;
+          resolve(this.data);
+        })
+        .fail(function (error) {
+          reject(error);
+        });
+    });
   }
 
   addItem(text, owner) {
@@ -35,7 +40,7 @@ export class DATA {
   }
 
   renderData() {
-    console.log(this.data);
+    
 
     this.data.forEach((e) => {
       const flower = FLOWERS.get(e.id);

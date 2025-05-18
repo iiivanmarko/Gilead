@@ -1,12 +1,12 @@
-import { data } from "./main.js";
+import { data, states } from "./main.js";
 
-export function loginhandler(){
+export async function loginhandler(){
 
     if (window.localStorage.getItem("owner")) {
-        data.loaddata();
-        data.renderData();
-        gsap.set('.login',{autoAlpha:0})
-        return
+       await data.loaddata();
+   
+        states.setState("intropage")
+        // return
     }
     
     const person = document.querySelector('[data-person]')
@@ -14,6 +14,8 @@ export function loginhandler(){
     const enter = document.querySelector('[data-enter]')
     
     enter.addEventListener('click', async () => {
+ 
+        
         if(person.value != "person1" 
             && person.value != "person2"
             && person.value != "person3"
@@ -24,9 +26,10 @@ export function loginhandler(){
         if (person.value.length > 0) {
             window.localStorage.setItem("owner", person.value);
             await data.loaddata();
-            data.renderData();
+        
+       
             person.value = "";
-            gsap.set('.login',{autoAlpha:0})
+            states.setState("intropage")
         }
     })
 }

@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <script type="module"  src="js/main.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js' integrity='sha512-gmwBmiTVER57N3jYS3LinA9eb8aHrJua5iQD7yqYCKa5x6Jjc7VDVaEA0je0Lu0bP9j7tEjV3+1qUm6loO99Kw==' crossorigin='anonymous' referrerpolicy='no-referrer'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js' integrity='sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==' crossorigin='anonymous' referrerpolicy='no-referrer'></script>
+    <script type="module"  src="js2/main.js"></script>
+    <link rel="stylesheet" href="style.css">
+        <script src="jquery.js"></script>
+        <script src="gsap.js"></script>
     <style>
         body,html{margin:0;padding:0} *,*::before,*::after{box-sizing:border-box; position:relative;}
         .login{width:100%;height:100%;left:0;top:0;position:fixed;display:flex;justify-content:center;align-items:center; background-color: white;}
@@ -15,18 +16,175 @@
 </head>
 <body>
     
-    
-    <button class='add' data-add>add</button>
+
+    <!-- <button class='add' data-add>add</button>
     
     <button class='sync' data-sync>sync</button>
     <button class='reset' data-reset>reset</button>
     <button class='break' data-break>break</button>
+    <button class='logout' data-logout>logout</button> -->
     
-    <div class='flowers' data-flowers></div>
+    <!-- <div class="state flowerspage nopoint">
 
-    <div class="login" data-login>
-    <input type="text" name="" id="" data-person>
-    <button data-enter>enter</button>
+        <div class='flowers' data-flowers></div>
+    <img class="back" data-goto="intropage" src="img/back.svg" alt="">
+    
+</div> -->
+
+
+
+
+<!-- intro -->
+
+<section class="intropage state centered">
+    
+    <div>
+        <img src="img/introtext.svg" alt="" class="introtext">
+        <button style="margin-top: var(--gap);" class="go" data-goto="enterpage">Jetzt gratulieren</button>
     </div>
+
+</section>
+<!-- intro end -->
+
+<!-- flowers -->
+<div class="state flowerspage centered" >
+    <!-- <img style="position: absolute;width:100%;height:100%;left:0;top:0;" src="img/flowers.png" alt=""> -->
+<div class='flowers nopoint' data-flowers style="position: absolute; left: 0;top: 0;"></div>
+
+    <div style="gap:0rem">
+<h2 class="nachricht" data-nachricht>
+Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo possimus, nesciunt libero veritatis quas quam in laboriosam cumque modi eaque. Laborum ducimus tenetur fugiat veniam doloremque non reiciendis dolores eaque atque, enim ut facere eius fugit perspiciatis accusantium, deserunt nesciunt aut aperiam, 
+</h2>
+ <img class="back" style="position: relative; padding-top: 0;" data-goto="intropage" src="img/back.svg" alt="">
+    </div>
+</div>
+<!-- flowers end -->
+
+
+
+<!-- legal -->
+<section class="legalpage centered state">
+    <div>
+<img class="legaltxt" src="img/legal.png" alt="">
+    </div>
+    <img class="back" data-goto="intropage" src="img/back.svg" alt="">
+
+</section>
+
+<!-- legalend -->
+
+<!-- enter -->
+<div class="state enterpage centered">
+    <div>
+ <p data-zeichen>Max 200 Zeichen</p>
+ <textarea data-textarea name="" id="" placeholder="Deine scheiss nachricht" maxlength="200"></textarea>
+ <button class="outline" data-save>SPEICHERN</button>
+    </div>
+    <img class="back" data-goto="intropage" src="img/back.svg" alt="">
+</div>
+<!-- enter end -->
+
+
+<!-- login -->
+<div class="state loginpage centered active">
+    <div>
+        <img class="wlogo" src="img/ylogowhite.svg" alt="">
+        <input type="text" name="" id="" data-person placeholder="E-Mail eingeben">
+        <button class="pink" data-enter>LOGIN</button>
+    </div>
+</div>
+<!-- login end -->
+
+
+<!-- kein internet -->
+<div class="state nointernetpage centered">
+    <div>
+        <img style="width:456px" src="img/kein.svg" alt="">
+        <button class="outline go" data-goto="sync" data-reload>Screen neu laden</button>
+    </div>
+    <img class="back" data-goto="intropage" src="img/back.svg" alt="">
+
+</div>
+<!-- kein internet end -->
+
+<!-- sync internet -->
+<div class="state sync centered online">
+    <div>
+        <img style="width:300px" src="img/synctxt.svg" alt="">
+        <button class="outline go" data-reload data-goto="editflowerspage">Synchronisieren</button>
+    </div>
+    <img class="back" data-goto="intropage" src="img/back.svg" alt="">
+
+</div>
+<!-- sync internet end -->
+
+<!-- editflowers -->
+<div class="state editflowerspage centered online">
+
+    <div>
+
+        <img src="img/bearbeiten.svg" style="width: 400px;" alt="">
+        <div class="flowerboxes" data-flowerboxes>
+         
+
+        </div>
+
+</div>
+<div class="grad"></div>
+<img class="back"  data-goto="intropage" src="img/back.svg" alt="">
+</div>
+<!-- editflowers end -->
+
+<!-- editbox -->
+<div class="state editbox centered online" >
+    <div>
+<h2 class="nachricht" data-boxnachricht>
+Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo possimus, nesciunt libero veritatis quas quam in laboriosam cumque modi eaque. Laborum ducimus tenetur fugiat veniam doloremque non reiciendis dolores eaque atque, enim ut facere eius fugit perspiciatis accusantium, deserunt nesciunt aut aperiam, 
+</h2>
+
+<button class="outline go" data-goto="editflowerspage" >Speichern</button>
+    </div>
+</div>
+<!-- editbox end -->
+
+
+<!-- menu -->
+<section class="menu">
+    
+    
+    <div class='legalbutton' data-legalbutton>
+        <svg xmlns="http://www.w3.org/2000/svg" width="27.3" height="34.125" viewBox="0 0 27.3 34.125">
+            <path id="description_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24" d="M166.825-852.7h13.65v-3.412h-13.65Zm0-6.825h13.65v-3.412h-13.65Zm-3.413,13.65a3.286,3.286,0,0,1-2.41-1,3.286,3.286,0,0,1-1-2.41v-27.3a3.286,3.286,0,0,1,1-2.41,3.286,3.286,0,0,1,2.41-1h13.65L187.3-869.762v20.475a3.286,3.286,0,0,1-1,2.41,3.286,3.286,0,0,1-2.41,1Zm11.944-22.181v-8.531H163.413v27.3h20.475v-18.769Zm-11.944-8.531v0Z" transform="translate(-160 880)" fill="var(--violet)"/>
+        </svg>
+        
+    </div>
+    
+    <div class='menubutton go' data-menubutton data-goto="nointernetpage" >
+        <svg class="nopoint" xmlns="http://www.w3.org/2000/svg" width="40" height="10" viewBox="0 0 40 10">
+            <g id="Group_9" data-name="Group 9" transform="translate(-610 -876)">
+                <circle id="Ellipse_7" data-name="Ellipse 7" cx="5" cy="5" r="5" transform="translate(610 876)" fill="var(--violet)"/>
+                <circle id="Ellipse_8" data-name="Ellipse 8" cx="5" cy="5" r="5" transform="translate(625 876)" fill="var(--violet)"/>
+                <circle id="Ellipse_9" data-name="Ellipse 9" cx="5" cy="5" r="5" transform="translate(640 876)" fill="var(--violet)"/>
+            </g>
+        </svg>
+        
+    </div>
+</section>
+<!-- menu end -->
+
+<div class='top full' data-top><img src="img/top.svg" alt=""></div>
+
+
+<div class="rotate full centered">
+    <div>
+
+        <img style="width: 682px;" src="img/rotate.svg" alt="">
+    </div>
+</div>
+
+
+<div>
+</div>
+
 </body>
 </html>
