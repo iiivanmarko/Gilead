@@ -5,10 +5,10 @@
 	$db_name = "Gilead";
 	$db_port = 3315;
 /*
-	$db_host = "localhost";
-	$db_user = "root";
-	$db_pass = "password";
-	$db_name = "gilead";
+	$db_host = "w02053ab.kasserver.com";
+	$db_user = "d043c1b1";
+	$db_pass = "aqqQaXY3gByhFrtXFQV8";
+	$db_name = "d043c1b1";
 	$db_port = 3306;
 */
 ?>
