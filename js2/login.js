@@ -16,9 +16,9 @@ export async function loginhandler(){
     enter.addEventListener('click', async () => {
  
         
-        if(person.value != "person1" 
-            && person.value != "person2"
-            && person.value != "person3"
+        if(person.value != "andre.reitter@gilead.com" 
+            && person.value != "monika.poelzleitner@gilead.com"
+            && person.value != "jelena.grubesic@gilead.com"
         ){
             alert("You are not allowed to enter this site")
             return

@@ -45,12 +45,12 @@ if(document.querySelector(`.${state}`).classList.contains('online')){
     }
     if(state == "flowerspage"){
 
+        // data.addItem(textarea.value, window.localStorage.getItem("owner"))
+        // data.saveData()
+     console.log(data.data);
      
-        // data.renderData()
-           FLOWERS.forEach(f => {
-           f.grow()
-          
-        });
+        data.renderData()
+    
         gsap.set('.top',{autoAlpha:0})
         
     }else{
