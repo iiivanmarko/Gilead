@@ -1,3 +1,4 @@
+import { FLOWERS } from "./flower.js"
 import { data } from "./main.js"
 import { adjstTextareaHeight } from "./textarea.js"
 
@@ -43,10 +44,20 @@ if(document.querySelector(`.${state}`).classList.contains('online')){
         gsap.set('.legalbutton',{autoAlpha:1})
     }
     if(state == "flowerspage"){
-        data.renderData()
+
+     
+        // data.renderData()
+           FLOWERS.forEach(f => {
+           f.grow()
+          
+        });
         gsap.set('.top',{autoAlpha:0})
         
     }else{
+        FLOWERS.forEach(f => {
+        f.hide()
+       
+     });
         
         gsap.set('.top',{autoAlpha:1})
     }

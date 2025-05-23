@@ -109,6 +109,10 @@ export class Flower {
           });
         }
         hide(){
+
+                    gsap.killTweensOf(this.root);
+          this.parts.forEach(part => gsap.killTweensOf(part.el));
+
           gsap.set(this.root,{
             svgOrigin:this.origin,
             scale:0
@@ -188,11 +192,11 @@ flattenTransforms(svg); // <- flatten before animation setup
 
   
 // hide all circles from svg
-// const circles = container.querySelectorAll('circle');
-// circles.forEach(circle => {
-//   circle.style.display = 'none';
-// }
-// );
+const circles = container.querySelectorAll('circle');
+circles.forEach(circle => {
+  circle.style.display = 'none';
+}
+);
 
   export const FLOWERS = new Map()
   const flowers = document.querySelectorAll('.flowers svg > g') 

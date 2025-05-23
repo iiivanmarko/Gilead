@@ -17,6 +17,7 @@ initBoxes()
 initsave()
 FLOWERS.forEach(f => {
    f.hide()
+  
 });
 
 
@@ -24,9 +25,12 @@ FLOWERS.forEach(f => {
 export const data = new DATA();
 
 
-
 const legalbutton = document.querySelector('[data-legalbutton]')
 legalbutton.addEventListener('click', () => {
+
+
+
+
 
    states.setState("legalpage")
 
