@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <script type="module"  src="js2/main.js"></script>
+    <script type="module"  src="js3/main.js"></script>
     <link rel="stylesheet" href="style.css">
         <script src="jquery.js"></script>
         <script src="gsap.js"></script>
@@ -52,7 +52,6 @@
 
     <div style="gap:0rem">
 <h2 class="nachricht" data-nachricht>
-Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo possimus, nesciunt libero veritatis quas quam in laboriosam cumque modi eaque. Laborum ducimus tenetur fugiat veniam doloremque non reiciendis dolores eaque atque, enim ut facere eius fugit perspiciatis accusantium, deserunt nesciunt aut aperiam, 
 </h2>
  <img class="back" style="position: relative; padding-top: 0;" data-goto="intropage" src="img/back.svg" alt="">
     </div>
@@ -110,7 +109,7 @@ Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo possimus, nesciun
 <div class="state sync centered online">
     <div>
         <img style="width:300px" src="img/synctxt.svg" alt="">
-        <button class="outline go" data-reload data-goto="editflowerspage">Synchronisieren</button>
+        <button class="outline go" data-syncing data-goto="editflowerspage">Synchronisieren</button>
     </div>
     <img class="back" data-goto="intropage" src="img/back.svg" alt="">
 
@@ -137,11 +136,10 @@ Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo possimus, nesciun
 <!-- editbox -->
 <div class="state editbox centered online" >
     <div>
-<h2 class="nachricht" data-boxnachricht>
-Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo possimus, nesciunt libero veritatis quas quam in laboriosam cumque modi eaque. Laborum ducimus tenetur fugiat veniam doloremque non reiciendis dolores eaque atque, enim ut facere eius fugit perspiciatis accusantium, deserunt nesciunt aut aperiam, 
-</h2>
+<textarea class="nachricht" data-boxnachricht maxlength="200">
+</textarea>
 
-<button class="outline go" data-goto="editflowerspage" >Speichern</button>
+<button class="outline go" data-goto="editflowerspage">Speichern</button>
     </div>
 </div>
 <!-- editbox end -->
@@ -158,7 +156,7 @@ Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo possimus, nesciun
         
     </div>
     
-    <div class='menubutton go' data-menubutton data-goto="nointernetpage" >
+    <div class='menubutton go' data-menubutton data-goto="sync" >
         <svg class="nopoint" xmlns="http://www.w3.org/2000/svg" width="40" height="10" viewBox="0 0 40 10">
             <g id="Group_9" data-name="Group 9" transform="translate(-610 -876)">
                 <circle id="Ellipse_7" data-name="Ellipse 7" cx="5" cy="5" r="5" transform="translate(610 876)" fill="var(--violet)"/>
