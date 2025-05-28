@@ -55,13 +55,13 @@ renderData() {
     if (!flower) return;
 
     if (e === last) {
-      flower.grow();    // animate the latest one
-      // gsap.delayedCall(1,()=>{
-      // })
+      gsap.delayedCall(1,()=>{
+        flower.grow();    // animate the latest one
+      })
     } else {
       flower.grow();    // animate the latest one
-      // flower.appear();  // just show the rest
-      // flower.idle();  // just show the rest
+      flower.appear();  // just show the rest
+      flower.idle();  // just show the rest
     }
   });
 }

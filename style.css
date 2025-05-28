@@ -55,7 +55,7 @@ img{width: 100%;}
 .loginpage input{text-align: center;}
 .centered > div{display:flex;align-items:center; justify-content:center;height: 100dvh; flex-direction: column; gap:var(--gap);}
 
-button{outline: none; min-width: 250px; text-transform: uppercase; border: none; border-radius: 1000px; background-color: var(--violet); padding: 1rem 2rem; font-size: 1.4rem; color: white;
+button{outline: none; min-width: 250px; text-transform: uppercase; border: none; border-radius: 1000px; background-color: var(--violet); padding: 1rem 2rem; padding-top: 1.1rem; font-size: 1.4rem; color: white;
 font-size: 25px;
 font-family: "Allotrope", sans-serif;font-weight: 700;
 }

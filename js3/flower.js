@@ -83,6 +83,7 @@ export class Flower {
             gsap.set(part.el,{scale:1})
           });
 
+          this.idle()
         }
         
         idle() {
