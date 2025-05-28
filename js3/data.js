@@ -39,6 +39,14 @@ export class DATA {
     FLOWERS.get(foundItem.id).grow();
   }
 
+  editItem(id, wunsch) {
+    let foundItem = this.data.find((item) => {
+      return item.id == id;
+    });
+    foundItem.wunsch = wunsch;
+    foundItem.time = new Date().getTime().toString();
+  }
+
 renderData() {
   // Filter flowers with both .wunsch and .time
   const valid = this.data.filter(e => e.wunsch && e.time);
