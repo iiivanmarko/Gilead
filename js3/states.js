@@ -24,7 +24,9 @@ export class States {
       textarea.value = "";
     }
     if (state == "enterpage") {
-      //    adjstTextareaHeight()
+
+
+         adjstTextareaHeight(document.querySelector("[data-textarea]"));
     }
 
     if (state == "legalpage") {
