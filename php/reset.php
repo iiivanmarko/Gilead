@@ -14,13 +14,13 @@ $conn->query("ALTER TABLE flowers AUTO_INCREMENT = 1");
 
 $insert_sql = "
 INSERT INTO flowers (owner, wunsch, time) VALUES
-" . str_repeat("('andre.reitter@gilead.com', '', ''),\n", 25) . "('andre.reitter@gilead.com', '', '');
+" . str_repeat("('andre.reitter@gilead.com', '', ''),\n", 22) . "('andre.reitter@gilead.com', '', '');
 
 INSERT INTO flowers (owner, wunsch, time) VALUES
-" . str_repeat("('monika.poelzleitner@gilead.com', '', ''),\n", 25) . "('monika.poelzleitner@gilead.com', '', '');
+" . str_repeat("('monika.poelzleitner@gilead.com', '', ''),\n", 22) . "('monika.poelzleitner@gilead.com', '', '');
 
 INSERT INTO flowers (owner, wunsch, time) VALUES
-" . str_repeat("('jelena.grubesic@gilead.com', '', ''),\n", 26) . "('jelena.grubesic@gilead.com', '', '');
+" . str_repeat("('jelena.grubesic@gilead.com', '', ''),\n", 22) . "('jelena.grubesic@gilead.com', '', '');
 ";
 
 if ($conn->multi_query($insert_sql)) {

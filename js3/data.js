@@ -33,7 +33,10 @@ export class DATA {
     let foundItem = this.data.find((item) => {
       return item.wunsch === "" && item.owner === owner;
     });
-
+    if (foundItem === undefined)  {
+      alert('Alle Blumen vergeben!');
+      return;
+    }
     foundItem.wunsch = text;
     foundItem.time = new Date().getTime().toString();
     FLOWERS.get(foundItem.id).grow();
