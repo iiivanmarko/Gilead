@@ -51,7 +51,7 @@ editBox(){
     
     const boxnachricht = document.querySelector('[data-boxnachricht]')
     boxnachricht.value = this.wunsch
-
+    boxnachricht.id = this.id
  
 states.setState("editbox")
 
@@ -62,10 +62,22 @@ states.setState("editbox")
 
 const syncing = document.querySelector('[data-syncing]')
 
+const editflower = document.querySelector('[data-editflower]')
+editflower.addEventListener("click",()=> {
+    const textarea = document.querySelector('[data-boxnachricht]')
+    if(textarea.value.length == 0) {
+        alert("Bitte Text eingeben")
+        return
+    }
+    data.editItem(textarea.id, textarea.value)
+    data.saveData()
+    data.syncData()
+    createBoxes()
+})
 
 
-
-syncing.addEventListener('click', () => { 
+syncing.addEventListener('click', () => {
+    data.syncData()
     createBoxes()
   })
 
